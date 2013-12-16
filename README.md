@@ -56,11 +56,12 @@ Nothing extraneous, nothing repeated.
 
 	$ bower install ember-amd
 	
-or you can download [ember-amd.js](https://raw.github.com/gigafied/ember-amd/master/ember-amd.js) and save it to your project folder.
+or you can download <a href="https://raw.github.com/gigafied/ember-amd/master/ember-amd.js" target="_blank">ember-amd.js</a> and save it to your project folder.
+
+##### Configuration
 
 Setup your configuration to something like this. Anywhere you would normally list `Ember` as a dependency, use `ember-amd` instead. Here, we setup the path to `Ember` to actually point to `ember-amd` and define `Ember` as `EmberGlobal`. Doing it this way, we can easily plug this into an already existing Ember application that uses AMD.
 
-##### Configuration
 ````js
 require.config({
 
@@ -132,3 +133,8 @@ define(
 Ember.`Application.create()` now expects an argument. That argument is the folder (or namespace) of the application. It's the folder where your `App.js` lives. This is the only change Ember Classes that Ember AMD makes.
 
 You'll notice that we have additional dependencies of `routes`, `views`, `controllers` and `templates`. This is because there is no good way to automatically detect which files do/don't exist, so you still have to list them as a dependency somewhere. You can either do this straight in your `App.js`, or create separate files for each type of `Class` as we do here, and list those as dependencies here.
+
+
+##### Templates
+
+To reap the benefits of precompiled templates in production code, please take a look at <a href="https://github.com/gigafied/requirejs-ember-handlebars" target="_blank">requirejs-ember-handlebars</a>
