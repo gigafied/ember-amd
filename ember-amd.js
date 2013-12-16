@@ -1,4 +1,4 @@
-;(function() {
+define ([], function () {
 
 	"use strict";
 
@@ -150,7 +150,7 @@
 	            id = null;
 	        }
 
-	        if (!deps instanceof Array) {
+	        if (!deps instanceof Array || typeof deps.push !== "function") {
 	            factory = deps;
 	            deps = [];
 	        }
@@ -202,5 +202,6 @@
 		}
 	});
 
-	window.define([], Ember);
-})();
+	return Ember;
+	
+});
