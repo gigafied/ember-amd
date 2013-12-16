@@ -1,0 +1,24 @@
+{
+  "name": "ember-amd",
+  "main": "ember-amd.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gigafied/ember-amd",
+  "authors": [
+    "Taka Kojima <taka@gigafied.com>"
+  ],
+  "description": "Use Ember.js with AMD",
+  "keywords": [
+    "ember.js",
+    "ember",
+    "amd",
+    "requirejs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
