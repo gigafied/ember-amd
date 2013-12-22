@@ -56,7 +56,7 @@ define ([], function () {
 
 		if (module && module.isClass) {
 			superClass = module.superclass.toString().replace("(subclass of ", "").replace(")", "");
-			superClass = map[superclass] || superClass;
+			superClass = map[superClass] || superClass;
 			return superClass.toLowerCase().replace("ember.", "");
 		}
 
