@@ -42,12 +42,21 @@ define ([], function () {
 
 	function getEmberType (module) {
 
-		var type,
+		var map,
+			type,
 			superClass;
 
-		if (module && module.isClass) {
+		map = {
+			"Ember.ArrayController" : "Ember.Controller",
+			"Ember.ObjectController" : "Ember.Controller",
+			"Ember.ContainerView" : "Ember.View",
+			"Ember.CollectionView" : "Ember.View",
+			"Ember.LinkView" : "Ember.View",
+		};
 
+		if (module && module.isClass) {
 			superClass = module.superclass.toString().replace("(subclass of ", "").replace(")", "");
+			superClass = map[superclass] || superClass;
 			return superClass.toLowerCase().replace("ember.", "");
 		}
 
@@ -135,6 +144,7 @@ define ([], function () {
 			config = getConfig(id, module);
 
 			if (config.register) {
+				//console.log(config.type, config.name);
 				APP.register([config.type, config.name].join(":"), module, config.options || {});
 			}
 		}
