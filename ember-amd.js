@@ -52,6 +52,7 @@ define ([], function () {
 			"Ember.ContainerView" : "Ember.View",
 			"Ember.CollectionView" : "Ember.View",
 			"Ember.LinkView" : "Ember.View",
+			"DS.Model" : "Ember.Model"
 		};
 
 		if (module && module.isClass) {
@@ -64,7 +65,7 @@ define ([], function () {
 	}
 
 	function getEmberName (type, id) {
-		
+
 		var p,
 			l,
 			name = [],
@@ -82,7 +83,7 @@ define ([], function () {
 		if (p.charAt(l) === "s") {
 			p = p.slice(0, l);
 			if (p === type) {
-				parts.shift();	
+				parts.shift();
 			}
 		}
 
@@ -127,7 +128,7 @@ define ([], function () {
 
 		var config;
 
-		if (!APP) {	
+		if (!APP) {
 
 			UNREGISTERED_MODULES[id] = module;
 
@@ -173,7 +174,7 @@ define ([], function () {
 
 	        		var val,
 	        			module = Array.prototype.splice.call(arguments, arguments.length-1, 1)[0];
-	        		
+
 	        		if (typeof factory === "function") {
         				factory = factory.apply(this, arguments);
 	        		}
@@ -213,5 +214,5 @@ define ([], function () {
 	});
 
 	return Ember;
-	
+
 });
