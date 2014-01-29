@@ -47,18 +47,18 @@ define ([], function () {
 			superClass;
 
 		map = {
-			"Ember.ArrayController" : "Ember.Controller",
-			"Ember.ObjectController" : "Ember.Controller",
-			"Ember.ContainerView" : "Ember.View",
-			"Ember.CollectionView" : "Ember.View",
-			"Ember.LinkView" : "Ember.View",
-			"DS.Model" : "Ember.Model"
+			"ArrayController" : "Controller",
+			"ObjectController" : "Controller",
+			"ContainerView" : "View",
+			"CollectionView" : "View",
+			"LinkView" : "View"
 		};
 
 		if (module && module.isClass) {
 			superClass = module.superclass.toString().replace("(subclass of ", "").replace(")", "");
+			superClass = superClass.split(".").slice(1).join('.');
 			superClass = map[superClass] || superClass;
-			return superClass.toLowerCase().replace("ember.", "");
+			return superClass.toLowerCase();
 		}
 
 		return false;
