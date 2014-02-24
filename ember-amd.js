@@ -1,13 +1,13 @@
 define ([], function () {
 
-	"use strict";
+	'use strict';
 
 	if (!window.define || !window.Ember) {
-		throw new Error("EMBER AMD expects window.define() and window.Ember to exist.");
+		throw new Error('EMBER AMD expects window.define() and window.Ember to exist.');
 	}
 
 	var APP = null,
-		APP_NAMESPACE = "",
+		APP_NAMESPACE = '',
 		UNREGISTERED_MODULES = {};
 
 	function upperFirst (s) {
@@ -47,16 +47,16 @@ define ([], function () {
 			superClass;
 
 		map = {
-			"ArrayController" : "Controller",
-			"ObjectController" : "Controller",
-			"ContainerView" : "View",
-			"CollectionView" : "View",
-			"LinkView" : "View"
+			'ArrayController' : 'Controller',
+			'ObjectController' : 'Controller',
+			'ContainerView' : 'View',
+			'CollectionView' : 'View',
+			'LinkView' : 'View'
 		};
 
 		if (module && module.isClass) {
-			superClass = module.superclass.toString().replace("(subclass of ", "").replace(")", "");
-			superClass = superClass.split(".").slice(1).join('.');
+			superClass = module.superclass.toString().replace('(subclass of ', '').replace(')', '');
+			superClass = superClass.split('.').slice(1).join('.');
 			superClass = map[superClass] || superClass;
 			return superClass.toLowerCase();
 		}
@@ -69,7 +69,7 @@ define ([], function () {
 		var p,
 			l,
 			name = [],
-			parts = id.split("/");
+			parts = id.split('/');
 
 		if (parts[0] !== APP_NAMESPACE) {
 			return false;
@@ -80,7 +80,7 @@ define ([], function () {
 		p = parts[0];
 		l = p.length - 1;
 
-		if (p.charAt(l) === "s") {
+		if (p.charAt(l) === 's') {
 			p = p.slice(0, l);
 			if (p === type) {
 				parts.shift();
@@ -91,7 +91,7 @@ define ([], function () {
 			parts[l] = lowerFirst(parts[l].replace(new RegExp(upperFirst(type) + '$'), ''));
 		}
 
-		return parts.join(".");
+		return parts.join('.');
 	}
 
 	function isUnderNamespace (ns1) {
@@ -99,9 +99,9 @@ define ([], function () {
 	}
 
 	function getNamespace (id) {
-		var a = id.split("/");
+		var a = id.split('/');
 		a.pop();
-		return a.join("/");
+		return a.join('/');
 	}
 
 	function registerUnregistered () {
@@ -146,7 +146,7 @@ define ([], function () {
 
 			if (config.register) {
 				//console.log(config.type, config.name);
-				APP.register([config.type, config.name].join(":"), module, config.options || {});
+				APP.register([config.type, config.name].join(':'), module, config.options || {});
 			}
 		}
 	}
@@ -161,12 +161,12 @@ define ([], function () {
 	            id = null;
 	        }
 
-	        if (!deps instanceof Array || typeof deps.push !== "function") {
+	        if (!deps instanceof Array || typeof deps.push !== 'function') {
 	            factory = deps;
 	            deps = [];
 	        }
 
-	        deps.push("module");
+	        deps.push('module');
 
 	        factory = (function (factory) {
 
@@ -175,7 +175,7 @@ define ([], function () {
 	        		var val,
 	        			module = Array.prototype.splice.call(arguments, arguments.length-1, 1)[0];
 
-	        		if (typeof factory === "function") {
+	        		if (typeof factory === 'function') {
         				factory = factory.apply(this, arguments);
 	        		}
 
@@ -197,7 +197,7 @@ define ([], function () {
 			var app,
 				namespace;
 
-			if (typeof arguments[0] === "string") {
+			if (typeof arguments[0] === 'string') {
 				namespace = Array.prototype.splice.call(arguments, 0, 1)[0];
 			}
 
