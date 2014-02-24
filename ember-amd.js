@@ -88,7 +88,7 @@ define ([], function () {
 		}
 
 		for (l = 0; l < parts.length; l ++) {
-			parts[l] = lowerFirst(parts[l].replace(upperFirst(type), ""));
+			parts[l] = lowerFirst(parts[l].replace(new RegExp(upperFirst(type) + '$'), ''));
 		}
 
 		return parts.join(".");
